@@ -1,18 +1,15 @@
 import pytest
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.support.ui import WebDriverWait
+from pom.homepage_nav import HomepageNav
 
 
 @pytest.mark.usefixtures('setup')
 class TestHomepage:
 
-    def test_homapage(self):
-        driver = webdriver.Chrome()
-        driver.get('https://ek.ua/')
-        wait = WebDriverWait(driver, 15, 0.2)
+    def test_nav_links_test_ru(self):
+        homepage_nav = HomepageNav(self.driver)
+        assert homepage_nav.NAV_LINK_TEXT_RU == homepage_nav.get_nav_links_text_ru()
 
-        logo = wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, 'div.s-catalog-subcat > a')))
-        logo.click()
-        print(driver.title)
+    def test_nav_links_test_ua(self):
+        homepage_nav = HomepageNav(self.driver)
+        homepage_nav.get_header_lang_ua().click()
+        assert homepage_nav.NAV_LINK_TEXT_UA == homepage_nav.get_nav_links_text_ua()
