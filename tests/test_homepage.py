@@ -13,3 +13,8 @@ class TestHomepage:
         homepage_nav = HomepageNav(self.driver)
         homepage_nav.get_header_lang_ua().click()
         assert homepage_nav.NAV_LINK_TEXT_UA == homepage_nav.get_nav_links_text_ua()
+
+    def test_nav_link_catalog(self):
+        homepage_nav = HomepageNav(self.driver)
+        assert homepage_nav.CATALOG_TITLE == homepage_nav.get_nav_link_catalog_title_text()
+        
