@@ -55,11 +55,3 @@ class HomepageNav(SeleniumBase):
         catalog_title = self.get_nav_link_catalog_title()
         catalog_title_text = self.get_text_from_webelement(catalog_title)
         return catalog_title_text
-
-    def get_catalog_cat(self) -> List[WebElement]:
-        '''Return WebElements for catalog links.'''
-        pass
-
-    def get_catalog_cat_text(self) -> str:
-        '''Return all catalog links text. Return format is a String with comma separated values'''
-        pass
